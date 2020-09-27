@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <title>Robert Smith</title>
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+    </head>
+    <body>
+        <div id="app-root"></div>
+        <script src="background-animation.js"></script>
+
+        <section class="banner">
+            <div id="animated-background-canvas"></div>
+            <div class="banner__inner">
+                <header class="banner__title">
+                    <h1>Robert Smith</h1>
+                    <p class='banner__subtitle'>Software Engineer</p>
+                </header>
+                <div class="banner__content">
+                    <ul class="banner__actions">
+                        <li>
+                            <a 
+                                class="banner__icon fab fa-linkedin"
+                                href='https://www.linkedin.com/in/robert-smith-832b7a52/'
+                            ></a>
+                        </li>
+                        <li>
+                            <a 
+                                class="banner__icon fab fa-github"
+                                href='https://github.com/ert135'
+                            >
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <script>
+           var background = document.getElementById('animated-background-canvas');
+           new p5(p5Wrapper, background);
+        </script>
+    </body>
+</html>
