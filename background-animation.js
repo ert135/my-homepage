@@ -1,33 +1,65 @@
+const airResistance = -0.0099;
+const minSize = 6;
+const maxSize = 16;
+
+const initialDriftForce = 4000000;
+const boidAmount = 100;
+
 class boid {
     constructor(
         initialPosition,
         p5ref,
         initialCanvasWidth,
-        initialCanvasHeight
+        initialCanvasHeight,
+        size
     ) {
         this.initialPosition = initialPosition;
         this.sketch = p5ref;
-        this.size = Math.floor(Math.floor(Math.random() * 7));
-        this.driftForce = new p5.Vector(this.getRandomArbitrary(-1, 1), this.getRandomArbitrary(-1, 1));
+        if(size){
+            this.size = size;
+        } else {
+            this.size = Math.floor(Math.random() * (maxSize - minSize + 1) + minSize); 
+        }
+        this.driftForce = new p5.Vector(this.getRandomArbitrary(-initialDriftForce, initialDriftForce), this.getRandomArbitrary(-initialDriftForce, -initialDriftForce));
         this.acceleration = this.driftForce;
         this.velocity = new p5.Vector();
         this.position = new p5.Vector(initialPosition.x, initialPosition.y);
         this.forces = [];
         this.canvasWidth = initialCanvasWidth;
         this.canvasHeight = initialCanvasHeight;
-        this.maxforce = 0.05;
+        this.maxforce = 0.10;
     }
 
     update() {
+        this.acceleration.sub(this.size * -0.002);
         this.velocity.add(this.acceleration);
-        this.velocity.limit(1);
+        this.velocity.limit(5);
         this.position.add(this.velocity);
         this.acceleration.mult(0);
         this.checkEdges();
         this.checkMouse();
+        this.applyResistance();
     }
 
     draw() {
+
+        let color;
+        if (this.size <= 7) {
+            color = this.sketch.color(255, 255, 255, 30);
+        }
+
+        if (this.size <= 6) {
+           color = this.sketch.color(255, 255, 255, 20);
+        }
+
+        if (this.size > 7) {
+            color = this.sketch.color(255, 255, 255, 40);
+        }
+
+        if (this.size > 10) {
+            color = this.sketch.color(255, 255, 255, 100);
+        }
+        this.sketch.fill(color);
         this.sketch.ellipse(this.position.x, this.position.y, this.size, this.size);
     }
 
@@ -66,16 +98,34 @@ class boid {
         let mouseVector = new p5.Vector(this.sketch.mouseX, this.sketch.mouseY);
         let distanceVector = p5.Vector.sub(mouseVector, this.position);
         let distanceScalar = distanceVector.mag();
-        if (distanceScalar < 300) {
+        if (distanceScalar < 100) {
             this.buildSteeringForce(mouseVector, distanceVector);
         }
     }
 
     buildSteeringForce(mouseVector, distanceVector) {
-        let desired = distanceVector.copy().mult(-1);
-        let steer = p5.Vector.sub(desired, this.velocity);
-        steer.limit(this.maxforce);
-        this.applyForce(steer);
+        const desired = distanceVector.copy().mult(-1);
+        const steer = p5.Vector.sub(desired, this.velocity);
+
+        let modifiedSteeringForce;
+        if (this.size <= 10) {
+            modifiedSteeringForce = steer.div(1000);
+        }
+
+        if (this.size <= 7) {
+            modifiedSteeringForce = steer.div(700);
+        }
+
+        if (this.size > 10) {
+            modifiedSteeringForce = steer.div(60);
+        }
+
+        this.applyForce(modifiedSteeringForce);
+    }
+
+    applyResistance() {
+        const resistanceForce = this.velocity.copy().mult(airResistance);
+        this.applyForce(resistanceForce);
     }
 }
 
@@ -85,13 +135,15 @@ let p5Wrapper = function( sketch ) {
     let boids = [];
 
     sketch.setup = function() {
+        sketch.pixelDensity(1); 
         if (window.innerWidth < 736) {
             sketch.createCanvas(canvasWidth, window.innerHeight);
         } else {
             sketch.createCanvas(canvasWidth, window.innerHeight);
         }
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < boidAmount; i++) {
             boids.push(new boid(new p5.Vector(Math.floor(Math.random() * canvasWidth-1), Math.floor(Math.random() * 799)), sketch, canvasWidth, window.innerHeight));
+            boids.push(new boid(new p5.Vector(Math.floor(Math.random() * canvasWidth-1), Math.floor(Math.random() * 799)), sketch, canvasWidth, window.innerHeight, 5));
         }
     };
 
@@ -100,7 +152,7 @@ let p5Wrapper = function( sketch ) {
         sketch.fill(255, 255, 255, 50);
         sketch.noStroke(0);
         boids.forEach(boid => {
-            boid.update();
+            boid.update(boids);
             boid.draw();
         });
     };
