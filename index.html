@@ -1,49 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <title>Robert Smith</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="styles/main.css">
-    </head>
-    <body>
-        <script src="background-animation.js"></script>
-        <div class="sky"></div>
-<div class="sky2"></div>
-<div class="lens"></div>
+  <head>
+    <meta charset="UTF-8">
 
-        <section class="banner">
-            <div id="animated-background-canvas"></div>
-            <div class="banner__inner">
-                <header class="banner__title">
-                    <h1 class="banner-title_name">Robert Smith</h1>
-                    <p class='banner-subtitle'>Software Engineer</p>
-                </header>
-                <div class="banner__content">
-                    <ul class="banner__actions">
-                        <li>
-                            <a 
-                                class="banner__icon fab fa-linkedin"
-                                href='https://www.linkedin.com/in/robert-smith-832b7a52/'
-                            ></a>
-                        </li>
-                        <li>
-                            <a 
-                                class="banner__icon fab fa-github"
-                                href='https://github.com/ert135'
-                            >
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
 
-        <script>
-           var background = document.getElementById('animated-background-canvas');
-           new p5(p5Wrapper, background);
-        </script>
-    </body>
+    <title>Robert Smith</title>
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+    >
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
+      rel="stylesheet"
+    >
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    >
+
+    <link
+      rel="stylesheet"
+      href="/styles/main.css"
+    >
+  </head>
+
+  <body>
+    <canvas id="battle-background"></canvas>
+
+    <div class="lens"></div>
+
+    <section class="banner">
+      <div class="banner__inner">
+        <header class="banner__title">
+          <h1 class="banner-title_name">
+            Robert Smith
+          </h1>
+
+          <p class="banner-subtitle">
+            Software Engineer
+          </p>
+        </header>
+
+        <div class="banner__content">
+          <ul class="banner__actions">
+            <li>
+              <a
+                class="banner__icon fab fa-linkedin"
+                href="https://www.linkedin.com/in/robert-smith-832b7a52/"
+                aria-label="LinkedIn"
+              ></a>
+            </li>
+
+            <li>
+              <a
+                class="banner__icon fab fa-github"
+                href="https://github.com/ert135"
+                aria-label="GitHub"
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="/src/main.js"
+    ></script>
+  </body>
 </html>
