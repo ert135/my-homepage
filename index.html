@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    >
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        >
 
-    <title>Robert Smith</title>
+        <link
+    rel="stylesheet"
+    href="./war-background/index-Bnx-L0FC.css"
+>
 
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-    >
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+            integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+            crossorigin="anonymous"
+        >
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
-      rel="stylesheet"
-    >
+        <link rel="stylesheet" href="styles/main.css">
 
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-    >
+        <title>Robert Smith</title>
+    </head>
 
-    <link
-      rel="stylesheet"
-      href="/styles/main.css"
-    >
-  </head>
-
-  <body>
-    <canvas id="battle-background"></canvas>
-
-    <div class="lens"></div>
+<body>
+    <canvas
+        id="canvas"
+        class="webgl background-canvas"
+        aria-hidden="true"
+    ></canvas>
 
     <section class="banner">
-      <div class="banner__inner">
-        <header class="banner__title">
-          <h1 class="banner-title_name">
-            Robert Smith
-          </h1>
+        <div class="banner__inner">
+            <header class="banner__title">
+                <h1>Robert Smith</h1>
+                <p class="banner__subtitle">Software Engineer</p>
+            </header>
 
-          <p class="banner-subtitle">
-            Software Engineer
-          </p>
-        </header>
+            <div class="banner__content">
+                <ul class="banner__actions">
+                    <li>
+                        <a
+                            class="banner__icon fab fa-linkedin"
+                            href="https://www.linkedin.com/in/robert-smith-832b7a52/"
+                            aria-label="LinkedIn"
+                        ></a>
+                    </li>
 
-        <div class="banner__content">
-          <ul class="banner__actions">
-            <li>
-              <a
-                class="banner__icon fab fa-linkedin"
-                href="https://www.linkedin.com/in/robert-smith-832b7a52/"
-                aria-label="LinkedIn"
-              ></a>
-            </li>
-
-            <li>
-              <a
-                class="banner__icon fab fa-github"
-                href="https://github.com/ert135"
-                aria-label="GitHub"
-              ></a>
-            </li>
-          </ul>
+                    <li>
+                        <a
+                            class="banner__icon fab fa-github"
+                            href="https://github.com/ert135"
+                            aria-label="GitHub"
+                        ></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </section>
 
     <script
-      type="module"
-      src="/src/main.js"
+        type="module"
+        src="./war-background/index-BQshSBrD.js"
     ></script>
-  </body>
+</body>
 </html>

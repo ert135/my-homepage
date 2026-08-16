@@ -1,39 +1,156 @@
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-}
+.background-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
 
-body {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  background: #020711;
-}
+    width: 100%;
+    height: 100%;
 
-#battle-background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-
-  display: block;
-
-  width: 100vw;
-  height: 100vh;
-
-  pointer-events: none;
+    pointer-events: auto;
 }
 
 .banner {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    /* Mouse events pass through to the canvas. */
+    pointer-events: none;
 }
 
-.lens {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
+.banner__subtitle {
+    margin: 1.5rem 0 0;
 
-  pointer-events: none;
+    color: #ffffff;
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(0.65rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.6;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 4px rgb(255 255 255 / 80%),
+        0 0 10px rgb(255 255 255 / 40%);
+}
+
+.banner__title h1 {
+    margin: 0;
+
+    color: #ffffff;
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(2rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 1.25;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 4px rgb(255 255 255 / 90%),
+        0 0 12px rgb(255 255 255 / 55%),
+        0 0 28px rgb(255 255 255 / 30%);
+}
+
+/* Make links clickable again. */
+.banner__icon {
+    pointer-events: auto;
+}
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+    .banner__inner {
+        padding: 1.5rem;
+    }
+
+    .banner__title h1 {
+        font-size: clamp(1.75rem, 9vw, 3.5rem);
+        line-height: 1.35;
+        letter-spacing: 0.05em;
+        overflow-wrap: anywhere;
+    }
+
+    .banner__subtitle {
+        margin-top: 1.25rem;
+
+        font-size: clamp(0.6rem, 3vw, 0.9rem);
+        line-height: 1.8;
+        letter-spacing: 0.08em;
+    }
+
+    .banner__content {
+        margin-top: 1.75rem;
+    }
+
+    .banner__actions {
+        gap: 1rem;
+    }
+
+    .banner__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 3rem;
+        height: 3rem;
+
+        font-size: 1.75rem;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+    .banner__inner {
+        padding: 3rem;
+    }
+
+    .banner__title h1 {
+        font-size: clamp(1.35rem, 9vw, 2.25rem);
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+    }
+
+    .banner__subtitle {
+        max-width: 18rem;
+        margin-top: 1rem;
+
+        font-size: clamp(0.55rem, 2.8vw, 0.7rem);
+        line-height: 1.9;
+        letter-spacing: 0.06em;
+    }
+
+    .banner__content {
+        margin-top: 1.25rem;
+    }
+}
+
+/* Phones in landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .banner__inner {
+        padding: 3rem;
+    }
+
+    .banner__title h1 {
+        font-size: clamp(1.25rem, 6vw, 2.5rem);
+    }
+
+    .banner__subtitle {
+        margin-top: 0.75rem;
+        font-size: 0.55rem;
+    }
+
+    .banner__content {
+        margin-top: 0.75rem;
+    }
+
+    .banner__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
 }
