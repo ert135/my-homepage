@@ -154,3 +154,52 @@
         font-size: 1.5rem;
     }
 }
+
+.banner__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    pointer-events: auto;
+}
+
+.banner__actions li {
+    display: flex;
+}
+
+.banner__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+
+    color: #ffffff;
+    font-size: 2rem;
+    text-decoration: none;
+
+    filter: drop-shadow(0 0 6px rgb(255 255 255 / 60%));
+
+    transition:
+        color 150ms ease,
+        transform 150ms ease,
+        filter 150ms ease;
+}
+
+.banner__icon:visited {
+    color: #ffffff;
+}
+
+.banner__icon:hover,
+.banner__icon:focus-visible {
+    color: #39ff14;
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 10px rgb(57 255 20 / 80%));
+}
